@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Kodeiak/meet-app.git/static/css/main.073c9b0a.css",
+    "main.js": "/Kodeiak/meet-app.git/static/js/main.99bdc08f.js",
+    "static/js/787.4b564826.chunk.js": "/Kodeiak/meet-app.git/static/js/787.4b564826.chunk.js",
+    "service-worker.js": "/Kodeiak/meet-app.git/service-worker.js",
+    "static/media/logo.svg": "/Kodeiak/meet-app.git/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
+    "index.html": "/Kodeiak/meet-app.git/index.html",
+    "main.073c9b0a.css.map": "/Kodeiak/meet-app.git/static/css/main.073c9b0a.css.map",
+    "main.99bdc08f.js.map": "/Kodeiak/meet-app.git/static/js/main.99bdc08f.js.map",
+    "787.4b564826.chunk.js.map": "/Kodeiak/meet-app.git/static/js/787.4b564826.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.99bdc08f.js"
+  ]
+}
