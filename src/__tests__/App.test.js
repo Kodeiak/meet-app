@@ -12,5 +12,4 @@ describe("<App /> component", () => {
     expect(AppWrapper.find(EventList)).toHaveLength(1);  // actual test > there should only be one Event List component
   });
 
-
 });
