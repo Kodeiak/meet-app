@@ -70,5 +70,25 @@ describe("<App /> integration", () => {
     await suggestionItems.at(suggestionItems.length - 1).simulate("click");
     const allEvents = await getEvents();
     expect(AppWrapper.state("events")).toEqual(allEvents);
-  })
+  });
+  
+  // test("renders correct number of events according to state", async () => {
+  //   // change number input
+  //   AppWrapper.find(NumberOfEvents).setState({ number: 1 });
+  //   const filteredEvents = await getEvents();
+  //   // expect events to equal filtered events
+  //   expect(AppWrapper.state("events")).toEqual(filteredEvents[0]);
+  // });
+
+  test("renders number input correctly", () => {
+    const number = AppWrapper.state("number");
+    expect(AppWrapper.find(".number").prop("value")).toBe(number);
+  });
+
+  // test("change state when number input changes", () => {
+  //   AppWrapper.setState({ number: 32 });
+  //   AppWrapper.find(".number").simulate("change", { target: { value: 1 }});
+  //   console.log(AppWrapper.find(".number").prop("value"));
+  //   expect(AppWrapper.state("number")).toBe(1);
+  // });
 })
