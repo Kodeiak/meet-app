@@ -40,6 +40,7 @@ describe("<App /> integration", () => {
   })
   
   test("App passes 'events' state as a prop to EventList", () => {
+    AppWrapper.update();
     const AppEventsState = AppWrapper.state("events");
     expect(AppEventsState).not.toEqual(undefined);
     expect(AppWrapper.find(EventList).props().events).toEqual(AppEventsState);
