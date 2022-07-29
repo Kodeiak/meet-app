@@ -74,8 +74,9 @@ describe("<App /> integration", () => {
   
   // test("renders correct number of events according to state", async () => {
   //   // change number input
-  //   AppWrapper.find(NumberOfEvents).setState({ number: 1 });
+  //   await AppWrapper.find(NumberOfEvents).setState({ number: 1 });
   //   const filteredEvents = await getEvents();
+  //   AppWrapper.update();
   //   // expect events to equal filtered events
   //   expect(AppWrapper.state("events")).toEqual(filteredEvents[0]);
   // });

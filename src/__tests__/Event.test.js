@@ -120,7 +120,7 @@ describe("<Event /> expanded component", () => {
     expect(EventWrapper.find(".description")).toHaveLength(1);
   });
 
-  test("render google calendar link correctly", () => {
+  test("render description correctly", () => {
     EventWrapper.setState({
       showDetails: true
     });
