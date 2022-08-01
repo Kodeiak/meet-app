@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
@@ -24,22 +25,34 @@ class App extends Component {
 
   async componentDidMount() {
     this.mounted = true;
-    const accessToken = localStorage.getItem("access_token");
-    const isTokenValid = (await checkToken(accessToken)).error ? false: true;
-    const searchParams = new URLSearchParams(window.location.search);
-    const code = searchParams.get("code");
-    this.setState({ showWelcomeScreen : !(code || isTokenValid) });
-    if ((code || isTokenValid) && this.mounted) {
-      getEvents().then((events) => {
-        if (this.mounted) {
-        this.setState({ 
-          events: events.slice(0, 32),
-          locations: extractLocations(events),
-          number: 32 
+    // if (window.location.href.startsWith("http://localhost")) {
+    //   console.log("local");
+    //   getEvents().then((events) => {
+    //     this.setState({ 
+    //       events: events.slice(0, 32),
+    //       locations: extractLocations(events),
+    //       number: 32,
+    //       showWelcomeScreen: undefined
+    //     });
+    //   });
+    // } else {
+      const accessToken = localStorage.getItem("access_token");
+      const isTokenValid = (await checkToken(accessToken)).error ? false: true;
+      const searchParams = new URLSearchParams(window.location.search);
+      const code = searchParams.get("code");
+      this.setState({ showWelcomeScreen : !(code || isTokenValid) });
+      if ((code || isTokenValid) && this.mounted) {
+        getEvents().then((events) => {
+          if (this.mounted) {
+          this.setState({ 
+            events: events.slice(0, 32),
+            locations: extractLocations(events),
+            number: 32 
+          });
+          }
         });
-        }
-      });
-    }
+      }
+  // }
   }
 
   componentWillUnmount() {
@@ -70,6 +83,16 @@ class App extends Component {
     });
   }
 
+  getData = () => {
+    const {locations, events} = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split(", ").shift()
+      return {city, number};
+    })
+    return data;
+  }
+
   render() {
     const { events, locations, number } = this.state;
 
@@ -77,8 +100,26 @@ class App extends Component {
     
     return (
       <div className="App">
+        <h1>Meet App</h1>
+        <h4>Choose your nearest city</h4>
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
         <NumberOfEvents number={number} updateEvents={this.updateEvents} />
+        <h4>Events in each city</h4>
+        <ResponsiveContainer width="100%" height="100%">
+          <ScatterChart
+            width={400}
+            height={400}
+            margin={{
+              top: 20, right: 20, bottom: 20, left: 20,
+            }}
+          >
+            <CartesianGrid />
+            <XAxis type="category" dataKey="city" name="city" />
+            <YAxis type="number" dataKey="number" name="number of events" />
+            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+            <Scatter data={this.getData()} fill="#8884d8" />
+          </ScatterChart>
+        </ResponsiveContainer>
         <EventList events={events} />
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
