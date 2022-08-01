@@ -1,10 +1,11 @@
-import { setCustomData } from "atatus-spa";
 import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 function EventGenre(props) {
   const [data, setData] = useState([]);
-  const { events } = this.props;
+  const { events } = props;
+
+  const COLORS = ['#204051', '#392F2C', '#2C3639', '#3B6978', '#C74B50'];
 
   const getData = () => {
     const genres = [
@@ -38,6 +39,9 @@ function EventGenre(props) {
         dataKey="value"
         label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
       >
+        {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
       </Pie>
     </PieChart>
     </ResponsiveContainer>
