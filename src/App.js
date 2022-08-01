@@ -105,10 +105,8 @@ class App extends Component {
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
         <NumberOfEvents number={number} updateEvents={this.updateEvents} />
         <h4>Events in each city</h4>
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer height={400} >
           <ScatterChart
-            width={400}
-            height={400}
             margin={{
               top: 20, right: 20, bottom: 20, left: 20,
             }}
