@@ -7,13 +7,41 @@ upcoming events.
 ## Demo
 [Meet App](https://kodeiak.github.io/meet-app/)
 
-## Installation
-
 ## Documentation
 
-## Deployement
+### Installation
 
-The app is dployed to github pages.
+```bash
+ git clone [repository]
+ cd meet-app
+ npm install
+```
+
+### Dependencies
+**For Development**
+- React
+- React Bootstrap
+- Recharts (for Data Visualization)
+- gh-pages
+
+**For Testing**
+- Jest
+- Jest cucumber (ntegration Testing)
+- Puppeteer (End-To-End-Testing)
+- Enzyme
+- Enzyme Adapter React 17
+- Atatus browser testing
+
+**Serverless**
+
+AWS Lambda was utilized to 
+- generate a token.
+- pass it to the application after request
+
+
+### Deployement
+
+The app is deployed to github pages.
 To deploy this project run
 ```bash
   npm run deploy
