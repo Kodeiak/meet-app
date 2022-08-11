@@ -26,7 +26,7 @@ upcoming events.
 
 **For Testing**
 - Jest
-- Jest cucumber (ntegration Testing)
+- Jest cucumber (Integration Testing)
 - Puppeteer (End-To-End-Testing)
 - Enzyme
 - Enzyme Adapter React 17
