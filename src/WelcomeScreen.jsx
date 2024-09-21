@@ -12,8 +12,7 @@ function WelcomeScreen(props) {
           <div className="button_cont" align="center">
             <div className="google-btn">
               <div className="google-icon-wrapper">
-                < img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Log
-o.svg" alt="Google sign-in" />
+                < img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google sign-in"/> 
               </div>
               <button 
                 onClick={() => { props.getAccessToken() }}
